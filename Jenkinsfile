@@ -11,21 +11,21 @@ pipeline {
         stage('Подготовка') {
             steps {
                 echo "Установка зависимостей..."
-                sh 'pip install -r requirements.txt'
+                bat 'pip install -r requirements.txt'
             }
         }
 
         stage('Запуск тестов') {
             steps {
                 echo "Запуск тестов..."
-                sh 'pytest --alluredir=${ALLURE_RESULTS} --reruns 2'  // Запуск тестов с повтором упавших
+                bat 'pytest --alluredir=${ALLURE_RESULTS} --reruns 2'  // Запуск тестов с повтором упавших
             }
         }
 
         stage('Генерация отчета Allure') {
             steps {
                 echo "Генерация отчета Allure..."
-                sh 'allure generate ${ALLURE_RESULTS} -o ${ALLURE_REPORT} --clean'
+                bat 'allure generate ${ALLURE_RESULTS} -o ${ALLURE_REPORT} --clean'
             }
         }
 
