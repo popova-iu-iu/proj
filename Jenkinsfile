@@ -44,11 +44,11 @@ pipeline {
         }
         failure {
             echo "Тесты упали! Отправка уведомления в Slack..."
-            slackSend channel: '#your-channel', color: 'danger', message: "Тесты упали: ${env.JOB_NAME} #${env.BUILD_NUMBER}"
+
         }
         success {
             echo "Тесты прошли успешно!"
-            slackSend channel: '#your-channel', color: 'good', message: "Тесты прошли успешно: ${env.JOB_NAME} #${env.BUILD_NUMBER}"
+
         }
     }
 }
